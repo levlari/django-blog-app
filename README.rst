@@ -28,7 +28,7 @@ Instructions
    from static files for security reasons. Provide the appropriate values for the
    following settings in your project's settings.py::
 
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'
 
 5. Some models require ``Pillow`` (http://pillow.readthedocs.io/en/latest/) to be installed.
