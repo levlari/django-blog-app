@@ -9,7 +9,8 @@ django-blog-app is a simple blogging app with the following features:
 Instructions
 ------------
 
-1. Install the django-crispy-forms by following the installation guide at http://django-crispy-forms.readthedocs.io/en/latest/
+1. Install the django-crispy-forms by following the installation guide at
+   http://django-crispy-forms.readthedocs.io/en/latest/
 
 2. Add "blog" app to your installed apps like::
 
