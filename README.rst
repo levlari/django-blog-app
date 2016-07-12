@@ -50,7 +50,7 @@ Instructions
     CRISPY_FAIL_SILENTLY = not DEBUG    # raise exception in development.
 
 8. To send email (required when registering new users), the following settings
-   need to be included. You have to use you own SMTP server and provide the details
+   need to be included. You have to use your own SMTP server and provide the details
    accordingly::
 
     EMAIL_USE_TLS = True
