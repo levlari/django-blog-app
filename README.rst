@@ -3,9 +3,9 @@ django-blog-app
 ===============
 django-blog-app is a simple blogging app with the following features:
 
-   - user authentication
-   - user registration with email confirmation
-   - dynamic preview while creating posts
+- user authentication
+- user registration with email confirmation
+- dynamic preview while creating posts
 
 Instructions
 ------------
@@ -55,7 +55,7 @@ Instructions
     EMAIL_HOST_PASSWORD = "password"
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-8. Some models require ``Pillow`` (http://pillow.readthedocs.io/en/latest/) to be installed.
+8. Some models in the app require ``Pillow`` (http://pillow.readthedocs.io/en/latest/) to be installed.
    Install it using pip::
 
     pip install Pillow
