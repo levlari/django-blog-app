@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>{% block head_title %} Blog {% endblock %}</title>
+        
+        <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/custom_styles.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                {# Toggle navbar: shows brand and toggle button when collapsed #}
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#nav-header-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'blog:home' %}">Blog</a>
+                </div>
+                
+                {# Content for toggling #}
+                <div class="collapse navbar-collapse" id="nav-header-collapse">
+                    <ul class="nav navbar-nav">
+                        {% block navbar_link %}
+                        {% endblock %}
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'blog:logout' %}">Log out</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        
+        
+        {# --- Core Javascript files --- #}
+        <script src="{% static 'blog/js/jquery-2.2.4.min.js' %}"></script>
+        <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+        
+        {# --- Page specific scripts --- #}
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

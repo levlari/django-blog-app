@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="col-sm-4 col-sm-offset-4">
+    <p align="center">Sign Up</p>
+    
+    <form action="{% url 'blog:register' %}" method="post">
+    {% csrf_token %}
+        <table>
+            {{ form|crispy }}
+        </table>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+</div>
+<br><br>
+{% endblock %}

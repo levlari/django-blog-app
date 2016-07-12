@@ -1,0 +1,77 @@
+{% extends 'blog/base.html' %}
+
+
+{% block navbar_link %}
+    <li>
+        <a href="{% url 'blog:write_post' %}">Write post</a>
+    </li>
+{% endblock %}
+
+
+{% block content %}
+{% if article_list %}
+    {% for article in article_list %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2><a href="{% url 'blog:read_post' slug=article.slug %}">{{ article.title }}</a></h2>
+                
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                {% if user == article.author %} You {% else %} {{ article.author.username }} {% endif %} <br>
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                {{ article.published_on }} <br>
+                {{ article.word_count }} words,
+                about {{ article.read_time_in_mins }} minute{{ article.read_time_in_mins|pluralize }} of reading<br>
+                <hr>
+                
+                {% if article.image %}
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <img class="img-responsive img-rounded" src="{{ article.image.url }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <p>{{ article.content|truncatechars:200 }}</p>
+                    </div>
+                {% else %}
+                    <p>{{ article.content|truncatechars:200 }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    
+    {% if is_paginated %}
+        <div class="clearfix"></div>
+        <nav class="col">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <span aria-hidden="true">&laquo;</span>
+                    </li>
+                {% endif %}
+                <li>
+                    <a>{{ page_obj.number }} <span class="sr-only">(current)</span></a>
+                </li>
+                {% if page_obj.has_next %}
+                    <li>
+                        <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <span aria-hidden="true">&raquo;</span>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+{% else %}
+    <p>No posts yet. Consider <a href="{% url 'blog:write_post' %}">writing one.</a></p>
+{% endif %}
+{% endblock %}

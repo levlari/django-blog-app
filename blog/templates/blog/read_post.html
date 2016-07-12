@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+
+{% block navbar_link %}
+    <li>
+        <a href="{% url 'blog:write_post' %}">Write post</a>
+    </li>
+{% endblock %}
+
+
+{% block content %}
+{% if user == object.author %}
+    <a class="btn btn-danger pull-right" href="{% url 'blog:delete_post' slug=object.slug %}">Delete post</a>
+{% endif %}
+<br>
+<h2>{{ object.title }}</h2>
+
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+{% if user == article.author %} You {% else %} {{ article.author.username }} {% endif %} <br>
+<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+{{ article.published_on }} <br>
+{{ article.word_count }} words,
+about {{ article.read_time_in_mins }} minute{{ article.read_time_in_mins|pluralize }} of reading<br>
+<hr>
+
+{% if object.image %}
+    <p><img class="img-responsive img-rounded center-block" style="max" src="{{ object.image.url }}"></p>
+{% endif %}
+<br>
+<p>{{ object.content|linebreaks }}</p>
+<br><br>
+{% endblock %}

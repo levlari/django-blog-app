@@ -1,0 +1,6 @@
+You have registered at the Blog with the following details:
+Username: {{ user.username }}
+Email: {{ user.email }}
+
+To confirm follow the link below:
+{{ protocol }}://{{ domain }}{% url 'blog:register_check' uidb64=uid token=token %}
