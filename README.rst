@@ -28,7 +28,7 @@ Instructions
    following settings in your project's settings.py::
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    MEDIA_URL = '/media/'
+    MEDIA_URL = 'blog/media/'
 
 5. Some of the views require urls for logging to which unauthorised users are
    redirected to. Add the following settings to your project's settings.py (you
