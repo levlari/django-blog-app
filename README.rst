@@ -1,10 +1,11 @@
 ===============
 django-blog-app
 ===============
-django-blog-app is a simple blogging app with the following features:  
-- user authentication
-- user registration with email confirmation
-- dynamic preview while creating posts
+django-blog-app is a simple blogging app with the following features:
+
+   - user authentication
+   - user registration with email confirmation
+   - dynamic preview while creating posts
 
 Instructions
 ------------
