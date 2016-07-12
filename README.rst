@@ -33,9 +33,9 @@ Instructions
 
 5. Some of the views require urls for logging to which unauthorised users are
    redirected to. Add the following settings to your project's settings.py (you
-   can change them if you want)::
+   can change them to you site's login urls)::
 
-    LOGIN_URL = '/login/'
+    LOGIN_URL = '/blog/login/'
     LOGIN_REDIRECT_URL = '/blog/'
 
 6. This app uses ``Bootstrap 3`` with ``django-crispy-forms``.
